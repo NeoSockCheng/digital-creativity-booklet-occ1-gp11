@@ -280,6 +280,7 @@ img {
   left: 0;
   width: 100%;
   min-height: var(--page-height);
+  max-height: var(--page-height);
   padding: var(--space-4) var(--space-8);
   background: var(--gradient-surface);
   backdrop-filter: blur(var(--glass-blur));
@@ -291,6 +292,8 @@ img {
   transform: rotateY(-90deg);
   transform-origin: left center;
   transition: all var(--transition-slow);
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .page.active {
