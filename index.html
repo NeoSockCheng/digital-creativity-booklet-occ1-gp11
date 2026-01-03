@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Creativity Booklet | Group 11</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="booklet-container">
+
+        <header class="booklet-header">
+            <h1 class="booklet-title">Isolation-Induced Cognitive Failure in Programming Education</h1>
+            <p class="booklet-subtitle">Occurence 1 - Group 11</p>
+        </header>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <nav class="nav-container">
+            <div class="chapter-nav" id="chapterNav"></div>
+        </nav>
+
+        <div class="book-wrapper">
+            <div class="book-pages" id="bookPages">
+                <!-- Pages will be loaded dynamically from pages/ folder -->
+            </div>
+        </div>
+
+        <div class="page-controls">
+            <button class="control-btn" id="prevBtn">← Previous</button>
+            <div class="page-indicator">
+                Page <span class="current-page" id="currentPage">1</span> of <span id="totalPages">8</span>
+            </div>
+            <button class="control-btn" id="nextBtn">Next →</button>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
