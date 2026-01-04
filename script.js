@@ -23,7 +23,7 @@ const chapters = [
     { page: 4, title: "Future" },
     { page: 5, title: "Management" },
     { page: 6, title: "Processes" },
-    { page: 7, title: "Conclusion" }
+    { page: 7, title: "Appendix" }
 ];
 
 // State
