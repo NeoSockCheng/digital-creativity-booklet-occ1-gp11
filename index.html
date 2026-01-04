@@ -16,6 +16,14 @@
             <p class="booklet-subtitle">Occurence 1 - Group 11</p>
         </header>
 
+        <!-- Fullscreen Toggle Button -->
+        <div style="text-align: center; margin-bottom: var(--space-4);">
+            <button class="fullscreen-btn" id="fullscreenBtn" title="Toggle Fullscreen">
+                <span class="fullscreen-icon" id="fullscreenIcon">⛶</span>
+                <span style="margin-left: var(--space-2);">Fullscreen Mode</span>
+            </button>
+        </div>
+
         <div class="progress-container">
             <div class="progress-bar" id="progressBar"></div>
         </div>
@@ -25,6 +33,14 @@
         </nav>
 
         <div class="book-wrapper">
+            <!-- Fullscreen Navigation Arrows -->
+            <button class="fullscreen-nav-btn fullscreen-nav-prev" id="fullscreenPrevBtn" title="Previous Page">
+                ←
+            </button>
+            <button class="fullscreen-nav-btn fullscreen-nav-next" id="fullscreenNextBtn" title="Next Page">
+                →
+            </button>
+
             <div class="book-pages" id="bookPages">
                 <!-- Pages will be loaded dynamically from pages/ folder -->
             </div>

@@ -33,7 +33,10 @@ let isAnimating = false;
 let pagesLoaded = false;
 
 // DOM Elements
-let prevBtn, nextBtn, currentPageDisplay, totalPagesDisplay, progressBar, chapterNav, bookPages;
+let prevBtn, nextBtn, currentPageDisplay, totalPagesDisplay, progressBar, chapterNav, bookPages, fullscreenBtn;
+
+// Fullscreen state
+let isFullscreen = false;
 
 // ============================================
 // INITIALIZATION
@@ -55,6 +58,14 @@ function initializeElements() {
     progressBar = document.getElementById('progressBar');
     chapterNav = document.getElementById('chapterNav');
     bookPages = document.getElementById('bookPages');
+    fullscreenBtn = document.getElementById('fullscreenBtn');
+
+    // Fullscreen navigation buttons
+    const fullscreenPrevBtn = document.getElementById('fullscreenPrevBtn');
+    const fullscreenNextBtn = document.getElementById('fullscreenNextBtn');
+
+    if (fullscreenPrevBtn) fullscreenPrevBtn.addEventListener('click', previousPage);
+    if (fullscreenNextBtn) fullscreenNextBtn.addEventListener('click', nextPage);
 
     if (totalPagesDisplay) {
         totalPagesDisplay.textContent = totalPages;
@@ -126,6 +137,7 @@ function createChapterNavigation() {
 function initializeEventListeners() {
     if (prevBtn) prevBtn.addEventListener('click', previousPage);
     if (nextBtn) nextBtn.addEventListener('click', nextPage);
+    if (fullscreenBtn) fullscreenBtn.addEventListener('click', toggleFullscreen);
 
     document.addEventListener('keydown', handleKeyboard);
 
@@ -150,11 +162,13 @@ function handleKeyboard(e) {
 
     switch (e.key) {
         case 'ArrowRight':
+        case 'ArrowDown':  // Added: Down arrow goes to next page
         case 'PageDown':
             e.preventDefault();
             nextPage();
             break;
         case 'ArrowLeft':
+        case 'ArrowUp':    // Added: Up arrow goes to previous page
         case 'PageUp':
             e.preventDefault();
             previousPage();
@@ -166,6 +180,10 @@ function handleKeyboard(e) {
         case 'End':
             e.preventDefault();
             goToPage(totalPages - 1);
+            break;
+        case ' ':  // Added: Spacebar goes to next page
+            e.preventDefault();
+            nextPage();
             break;
     }
 }
@@ -254,6 +272,55 @@ function updateChapterButtons() {
     chapterButtons.forEach((btn, index) => {
         btn.classList.toggle('active', index === currentChapterIndex);
     });
+}
+
+// ============================================
+// FULLSCREEN TOGGLE (Native Browser API - Like YouTube)
+// ============================================
+
+function toggleFullscreen() {
+    const bookletContainer = document.querySelector('.booklet-container');
+    const fullscreenIcon = document.getElementById('fullscreenIcon');
+
+    if (!document.fullscreenElement) {
+        // Enter fullscreen mode
+        if (bookletContainer.requestFullscreen) {
+            bookletContainer.requestFullscreen();
+        } else if (bookletContainer.webkitRequestFullscreen) { // Safari
+            bookletContainer.webkitRequestFullscreen();
+        } else if (bookletContainer.msRequestFullscreen) { // IE11
+            bookletContainer.msRequestFullscreen();
+        }
+        fullscreenIcon.textContent = '⛶';
+        fullscreenBtn.title = 'Exit Fullscreen (ESC)';
+    } else {
+        // Exit fullscreen mode
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) { // Safari
+            document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) { // IE11
+            document.msExitFullscreen();
+        }
+        fullscreenIcon.textContent = '⛶';
+        fullscreenBtn.title = 'Toggle Fullscreen';
+    }
+}
+
+// Listen for fullscreen changes (when user presses ESC)
+document.addEventListener('fullscreenchange', handleFullscreenChange);
+document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+document.addEventListener('msfullscreenchange', handleFullscreenChange);
+
+function handleFullscreenChange() {
+    const fullscreenIcon = document.getElementById('fullscreenIcon');
+    if (document.fullscreenElement) {
+        fullscreenIcon.textContent = '⛶';
+        fullscreenBtn.title = 'Exit Fullscreen (ESC)';
+    } else {
+        fullscreenIcon.textContent = '⛶';
+        fullscreenBtn.title = 'Toggle Fullscreen';
+    }
 }
 
 console.log('%c Digital Creativity Booklet ', 'background: linear-gradient(135deg, #a855f7, #3b82f6); color: white; padding: 10px 20px; font-size: 16px; font-weight: bold;');
