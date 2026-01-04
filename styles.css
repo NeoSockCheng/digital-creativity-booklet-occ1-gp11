@@ -9,42 +9,47 @@
    ============================================ */
 
 :root {
-  /* Color Palette - Professional & Accessible */
+  /* Color Palette - Balanced & Attractive */
   --primary-hue: 210;
-  --primary-color: hsl(210, 60%, 45%);        /* Navy Blue */
-  --primary-dark: hsl(210, 70%, 35%);
-  --primary-light: hsl(210, 50%, 65%);
+  --primary-color: hsl(210, 70%, 50%);        /* Bright Blue */
+  --primary-dark: hsl(210, 75%, 40%);
+  --primary-light: hsl(210, 65%, 65%);
   
-  --accent-hue: 355;
-  --accent-color: hsl(355, 50%, 50%);         /* Burgundy/Maroon */
-  --accent-light: hsl(355, 45%, 65%);
+  --accent-hue: 30;
+  --accent-color: hsl(30, 80%, 55%);          /* Warm Orange */
+  --accent-light: hsl(30, 75%, 65%);
   
-  --bg-light: hsl(40, 30%, 97%);              /* Warm off-white */
+  --secondary-hue: 160;
+  --secondary-color: hsl(160, 50%, 45%);      /* Soft Green */
+  --secondary-light: hsl(160, 45%, 60%);
+  
+  --bg-light: hsl(40, 25%, 98%);              /* Soft cream */
   --bg-lighter: hsl(0, 0%, 100%);             /* Pure white */
-  --surface-light: hsl(40, 20%, 95%);         /* Light cream */
-  --surface-lighter: hsl(40, 25%, 98%);
+  --surface-light: hsl(40, 20%, 96%);         /* Light warm */
+  --surface-lighter: hsl(40, 15%, 98%);
   
-  --text-primary: hsl(0, 0%, 15%);            /* Dark gray, almost black */
+  --text-primary: hsl(0, 0%, 15%);            /* Dark gray */
   --text-secondary: hsl(0, 0%, 35%);          /* Medium gray */
   --text-muted: hsl(0, 0%, 55%);              /* Light gray */
   
-  /* Gradients - Subtle and Professional */
+  /* Gradients - Pleasant and Harmonious */
   --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+  --gradient-secondary: linear-gradient(135deg, var(--accent-color), var(--accent-light));
   --gradient-bg: linear-gradient(135deg, 
-    hsl(40, 30%, 98%) 0%, 
-    hsl(210, 20%, 96%) 50%, 
-    hsl(40, 25%, 97%) 100%);
+    hsl(210, 20%, 98%) 0%, 
+    hsl(40, 20%, 97%) 50%, 
+    hsl(210, 15%, 98%) 100%);
   --gradient-surface: linear-gradient(135deg, 
-    hsla(40, 20%, 96%, 0.95), 
-    hsla(210, 15%, 97%, 0.95));
+    hsla(210, 15%, 97%, 0.95), 
+    hsla(40, 20%, 98%, 0.95));
   
   /* Typography */
   --font-display: 'Playfair Display', serif;
   --font-body: 'Inter', sans-serif;
   
-  --text-xs: 0.8rem;                          /* Slightly larger for readability */
+  --text-xs: 0.8rem;
   --text-sm: 0.95rem;
-  --text-base: 1.05rem;                       /* Increased base size */
+  --text-base: 1.05rem;
   --text-lg: 1.2rem;
   --text-xl: 1.35rem;
   --text-2xl: 1.6rem;
@@ -81,7 +86,7 @@
   /* Layout */
   --page-width: 800px;
   --page-height: 1000px;
-  --border-radius: 8px;                       /* Slightly less rounded */
+  --border-radius: 8px;
 }
 
 /* ============================================
